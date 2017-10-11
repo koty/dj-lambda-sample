@@ -1,0 +1,7 @@
+.idea/
+env/
+__pycache__
+.serverless/
+node_modules/
+.requirements/
+.wsgi_app
