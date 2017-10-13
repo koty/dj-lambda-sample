@@ -117,4 +117,4 @@ custom:
   pythonRequirements:
     dockerizePip: true
   wsgi:
-    app: dj-lambda-sample.application
+    app: dj-lambda-sample.wsgi.application
