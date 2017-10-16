@@ -25,7 +25,7 @@ SECRET_KEY = 'r--2pkb3f0q$raxvph!#204thm+j@qm%%)9e28aaa@_0k5ml)1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,8 +77,6 @@ WSGI_APPLICATION = 'dj-lambda-sample.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',
     }
 }
 
