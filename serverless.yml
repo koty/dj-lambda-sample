@@ -24,7 +24,7 @@ provider:
   stage: production
   region: ap-northeast-1
 
-  timeout: 10
+  timeout: 60
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -41,14 +41,26 @@ provider:
 #          - - "arn:aws:s3:::"
 #            - "Ref" : "ServerlessDeploymentBucket"
 #            - "/*"
-
-# you can define service wide environment variables here
-#  environment:
-#    CONSUMER_KEY: ${file(./serverless.env.yml):CONSUMER_KEY}
-#    CONSUMER_SECRET: ${file(./serverless.env.yml):CONSUMER_SECRET}
-#    ACCESS_TOKEN: ${file(./serverless.env.yml):ACCESS_TOKEN}
-#    ACCESS_TOKEN_SECRET: ${file(./serverless.env.yml):ACCESS_TOKEN_SECRET}
-#    DOCO_API_KEY: ${file(./serverless.env.yml):DOCO_API_KEY}
+  vpc:
+    securityGroupIds:
+      - ${file(./serverless.env.yml):SECURITY_GROUP_ID}
+    subnetIds:
+      - ${file(./serverless.env.yml):SUBNET_ID1}
+      - ${file(./serverless.env.yml):SUBNET_ID2}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "ec2:CreateNetworkInterface"
+        - "ec2:DescribeNetworkInterfaces"
+        - "ec2:DeleteNetworkInterface"
+      Resource:
+        - "*"
+  environment:
+    DATABASE_NAME: ${file(./serverless.env.yml):DATABASE_NAME}
+    DATABASE_USER: ${file(./serverless.env.yml):DATABASE_USER}
+    DATABASE_PASSWORD: ${file(./serverless.env.yml):DATABASE_PASSWORD}
+    DATABASE_HOST: ${file(./serverless.env.yml):DATABASE_HOST}
+    DATABASE_PORT: ${file(./serverless.env.yml):DATABASE_PORT}
 
 
 # you can add packaging information here

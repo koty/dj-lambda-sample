@@ -6,3 +6,4 @@ node_modules/
 .requirements/
 .wsgi_app
 .python-version
+serverless.env.yml
