@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     'rest_framework',
     'api.apps.ApiConfig',
 ]
@@ -119,8 +120,20 @@ USE_L10N = True
 
 USE_TZ = True
 
+AWS_ACCESS_KEY_ID = 'your key'
+AWS_SECRET_ACCESS_KEY = 'your secret'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+# thanks for http://orangain.hatenablog.com/entry/django-heroku-s3-part1
+
+# S3バケットのURL（サブドメインのURLを使ってもどちらでもいいです。）
+STATIC_URL = 'https://s3-ap-northeast-1.amazonaws.com/some-bucket-name/static/'
+
+# collectstaic時にS3を使う
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# 作成したS3バケットの名前
+AWS_STORAGE_BUCKET_NAME = 'some-bucket-name'
+# これをTrueにしたほうがファイル変更のチェックが速くなる
+AWS_PRELOAD_METADATA = True

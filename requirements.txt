@@ -1,5 +1,8 @@
+boto==2.48.0
+django-storages==1.6.5
 Django==2.0
 djangorestframework==3.7.0
 drf-writable-nested==0.3.0
 Werkzeug==0.12.2
 psycopg2==2.7.3.2
+django-storages==1.6.5

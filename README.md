@@ -7,8 +7,7 @@ npm install -g serverless
 git clone https://github.com/koty/dj-lambda-sample.git
 cd dj-lambdsa-sample
 npm install
+copy serverless.env.yml.template to serverless.env.yml and edit values
+edit settings.py
 serverless deploy --aws-profile your_some_profile
 ```
-# Limitations
-This sample doesn't work properly because of using SQLite in settings.py. 
-So please fix settings.py like RDS to connect database.

@@ -7,3 +7,4 @@ node_modules/
 .wsgi_app
 .python-version
 serverless.env.yml
+settings_local.py
